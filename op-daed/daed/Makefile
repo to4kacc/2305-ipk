@@ -5,10 +5,10 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=daed
-PKG_VERSION:=2025.03.03
+PKG_VERSION:=2025.03.04
 DAED_VERSION:=daed-44f1bbe
 WING_VERSION:=wing-33cbf33
-CORE_VERSION:=core-43ec540
+CORE_VERSION:=core-2edc2d3
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
@@ -75,7 +75,6 @@ define Build/Prepare
 		pushd $(PKG_BUILD_DIR)/dae-core ; \
 		git submodule update --init ; \
 		go mod tidy ; \
-		wget -qO - https://github.com/daeuniverse/dae/commit/43ec540.patch | patch -Rp1 ; \
 		popd ; \
 		pushd $(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)/wing ; \
 		wget -qO - https://github.com/daeuniverse/dae-wing/commit/ca02961.patch | patch -p1 ; \
