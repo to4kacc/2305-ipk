@@ -131,7 +131,7 @@ define Build/Compile
 		BPF_STRIP_FLAG="-strip=$(LLVM_STRIP)" \
 		BPF_CFLAGS="$(DAE_CFLAGS)" \
 		BPF_TARGET="bpfel,bpfeb" \
-		ARCH="$(GO_ARCH)" \
+		GOARCH=$$$$(go env GOARCH) \
 		go generate control/control.go ; \
 		popd ; \
 		$(call GoPackage/Build/Compile) ; \
